@@ -333,9 +333,9 @@ html.intro-lock{overflow:hidden}
 .intro-stage{display:flex;flex-direction:column;align-items:center;gap:26px}
 .intro-net{width:min(82vw,430px);height:auto;overflow:visible}
 .cdot{fill:var(--lime);transform-box:fill-box;transform-origin:center;opacity:0;filter:drop-shadow(0 0 5px rgba(179,221,3,.6))}
-.cln{stroke:var(--lime);stroke-width:2.4;stroke-linecap:round;fill:none;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;opacity:.95;filter:drop-shadow(0 0 4px rgba(179,221,3,.65))}
-.cpulse{stroke:var(--lime);stroke-width:2;fill:none;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;opacity:0}
-.intro-logo{width:min(86vw,450px);perspective:1000px}
+.cln{stroke:var(--lime);stroke-width:3;stroke-linecap:round;fill:none;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 4px rgba(179,221,3,.6))}
+.cpulse{stroke:var(--lime);stroke-width:2.4;fill:none;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;opacity:0}
+.intro-logo{width:min(86vw,450px)}
 .intro-logo svg{width:100%;height:auto;color:#F6F7F2;display:block;overflow:visible}
 .intro-strap{display:flex;gap:.55em;font-family:var(--disp);font-weight:700;text-transform:uppercase;
   letter-spacing:.2em;font-size:clamp(.6rem,1.7vw,.82rem);color:var(--lime)}
@@ -729,9 +729,8 @@ if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){finish();return;}
   if(!window.gsap){finish();reveal();return;}
   root.classList.add('intro-lock');
-  var q=gsap.utils.selector(intro), svg=intro.querySelector('.intro-logo svg');
-  gsap.set(svg,{transformPerspective:900,transformOrigin:'50% 52%',rotationX:38,rotationY:-22,z:-70});
-  gsap.set(q('.tri-wrap'),{svgOrigin:'162 72',scale:2.7,x:82,y:8});
+  var q=gsap.utils.selector(intro);
+  gsap.set(q('.tri-wrap'),{svgOrigin:'162 72',scale:3,x:82,y:8});
   gsap.set(q('.cdot'),{scale:0,opacity:0,transformOrigin:'50% 50%'});
   gsap.set(q('.cpulse'),{scale:0,opacity:0,transformOrigin:'50% 50%'});
   gsap.set(q('.cln'),{strokeDashoffset:1});
@@ -740,17 +739,16 @@ if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
   gsap.set(q('.ltr-right'),{opacity:0,x:12});
   gsap.set(q('.tag-w1, .tag-w2, .tag-w3'),{opacity:0,y:7});
   var tl=gsap.timeline({defaults:{ease:'power3.out'},onComplete:finish});
-  tl.to(q('.cdot'),{scale:1,opacity:1,duration:.5,ease:'back.out(2.2)',stagger:.13},0.2)
-    .to(q('.cln'),{strokeDashoffset:0,duration:.6,ease:'power2.inOut',stagger:.18},0.46)
-    .to(q('.cpulse'),{scale:2,opacity:.45,duration:.7,ease:'power2.out',stagger:.18},'<0.15')
-    .to(q('.cpulse'),{opacity:0,duration:.5,ease:'power1.out'},'<0.3')
-    .to(q('.real-tri'),{opacity:1,duration:.5,ease:'power2.out'},1.5)
-    .to(q('.tri-draw'),{opacity:0,duration:.5,ease:'power2.out'},'<0.05')
-    .to(svg,{rotationX:0,rotationY:0,z:0,duration:1.5,ease:'power3.inOut'},1.5)
-    .to(q('.tri-wrap'),{scale:1,x:0,y:0,duration:1.5,ease:'expo.inOut'},'<')
-    .to(q('.ltr-left'),{opacity:1,x:0,duration:.7,ease:'power3.out'},'-=0.55')
-    .to(q('.ltr-right'),{opacity:1,x:0,duration:.7,ease:'power3.out'},'<0.08')
-    .to(q('.tag-w1, .tag-w2, .tag-w3'),{opacity:1,y:0,duration:.55,ease:'power2.out',stagger:.13},'-=0.2')
+  tl.to(q('.cdot'),{scale:1,opacity:1,duration:.55,ease:'back.out(2)',stagger:.1},0.15)
+    .to(q('.cln'),{strokeDashoffset:0,duration:.62,ease:'power2.inOut',stagger:.16},0.42)
+    .to(q('.cpulse'),{scale:2.2,opacity:.5,duration:.75,ease:'power2.out',stagger:.16},'<0.12')
+    .to(q('.cpulse'),{opacity:0,duration:.5,ease:'power1.out'},'<0.32')
+    .to(q('.real-tri'),{opacity:1,duration:.5,ease:'power2.out'},1.3)
+    .to(q('.tri-draw'),{opacity:0,duration:.5,ease:'power2.out'},'<0.04')
+    .to(q('.tri-wrap'),{scale:1,x:0,y:0,duration:1.2,ease:'expo.inOut'},1.42)
+    .to(q('.ltr-left'),{opacity:1,x:0,duration:.75,ease:'power3.out'},'-=0.52')
+    .to(q('.ltr-right'),{opacity:1,x:0,duration:.75,ease:'power3.out'},'<0.08')
+    .to(q('.tag-w1, .tag-w2, .tag-w3'),{opacity:1,y:0,duration:.55,ease:'power2.out',stagger:.13},'-=0.22')
     .add(reveal,'+=0.3')
     .to(intro,{autoAlpha:0,duration:.7,ease:'power2.inOut'},'+=0.05');
   intro.addEventListener('click',function(){reveal();tl.progress(1);});
