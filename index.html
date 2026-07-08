@@ -322,9 +322,9 @@ form.sent .form-done{display:flex}
 @keyframes lgTri{0%{opacity:0;transform:scale(.2) rotate(-35deg)}55%{opacity:1;transform:scale(1.12) rotate(6deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes lgWord{0%{opacity:0;clip-path:inset(0 100% 0 0)}100%{opacity:1;clip-path:inset(0 0 0 0)}}
 @keyframes lgTag{0%{opacity:0;transform:translateY(4px)}100%{opacity:1;transform:translateY(0)}}
-.brand-anim .lg-tri{transform-box:fill-box;transform-origin:50% 60%;animation:lgTri .72s var(--ease) .05s both}
-.brand-anim .lg-word{animation:lgWord .66s var(--ease) .3s both}
-.brand-anim .lg-tag{transform-box:fill-box;animation:lgTag .5s ease .55s both}
+html.intro-done .brand-anim .lg-tri{transform-box:fill-box;transform-origin:50% 60%;animation:lgTri .72s var(--ease) .05s both}
+html.intro-done .brand-anim .lg-word{animation:lgWord .66s var(--ease) .3s both}
+html.intro-done .brand-anim .lg-tag{transform-box:fill-box;animation:lgTag .5s ease .55s both}
 @media (prefers-reduced-motion:reduce){.brand-anim .lg-tri,.brand-anim .lg-word,.brand-anim .lg-tag{animation:none}}
 /* full-screen intro splash */
 html.intro-lock{overflow:hidden}
@@ -336,7 +336,7 @@ html.intro-lock{overflow:hidden}
 .cln{stroke:var(--lime);stroke-width:3;stroke-linecap:round;fill:none;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 4px rgba(179,221,3,.6));animation:clnDraw .42s ease both}
 .cpulse{stroke:var(--lime);stroke-width:3;fill:none;transform-box:fill-box;transform-origin:center;opacity:0;animation:cpulse .7s ease both}
 .intro-logo{width:min(86vw,450px)}
-.intro-logo svg{width:100%;height:auto;color:#F6F7F2;display:block}
+.intro-logo svg{width:100%;height:auto;color:#F6F7F2;display:block;overflow:visible}
 .intro-strap{display:flex;gap:.55em;font-family:var(--disp);font-weight:700;text-transform:uppercase;
   letter-spacing:.2em;font-size:clamp(.6rem,1.7vw,.82rem);color:var(--lime)}
 .intro-strap span{opacity:0;animation:strapWord .5s var(--ease) both}
@@ -723,8 +723,10 @@ if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
 (function(){var i=document.getElementById('intro');if(!i)return;var h=document.documentElement;
  if(matchMedia('(prefers-reduced-motion:reduce)').matches){i.style.display='none';return;}
  h.classList.add('intro-lock');
- function done(){i.style.display='none';h.classList.remove('intro-lock');}
+ function reveal(){h.classList.add('intro-done');}
+ function done(){i.style.display='none';h.classList.remove('intro-lock');reveal();}
  i.addEventListener('click',done);
+ i.addEventListener('animationstart',function(e){if(e.animationName==='introOut')reveal();});
  i.addEventListener('animationend',function(e){if(e.animationName==='introOut')done();});
  setTimeout(done,6000);
 })();
