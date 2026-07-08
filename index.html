@@ -329,33 +329,33 @@ html.intro-done .brand-anim .lg-tag{transform-box:fill-box;animation:lgTag .5s e
 /* full-screen intro splash */
 html.intro-lock{overflow:hidden}
 #intro{position:fixed;inset:0;z-index:2000;background:radial-gradient(circle at 50% 42%,#0b1226,var(--navy) 72%);
-  display:grid;place-items:center;animation:introOut .6s var(--ease) 4.1s forwards}
+  display:grid;place-items:center;animation:introOut .7s var(--ease) 3.8s forwards}
 .intro-stage{display:flex;flex-direction:column;align-items:center;gap:26px}
 .intro-net{width:min(82vw,430px);height:auto;overflow:visible}
 .cdot{fill:var(--lime);transform-box:fill-box;transform-origin:center;opacity:0;filter:drop-shadow(0 0 5px rgba(179,221,3,.6));animation:cdotIn .5s var(--ease) both}
-.cln{stroke:var(--lime);stroke-width:3;stroke-linecap:round;fill:none;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 4px rgba(179,221,3,.6));animation:clnDraw .42s ease both}
-.cpulse{stroke:var(--lime);stroke-width:3;fill:none;transform-box:fill-box;transform-origin:center;opacity:0;animation:cpulse .7s ease both}
+.cln{stroke:var(--lime);stroke-width:3;stroke-linecap:round;fill:none;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 4px rgba(179,221,3,.6));animation:clnDraw .5s var(--ease) both}
+.cpulse{stroke:var(--lime);stroke-width:2.4;fill:none;transform-box:fill-box;transform-origin:center;opacity:0;animation:cpulse .8s var(--ease) both}
 .intro-logo{width:min(86vw,450px)}
 .intro-logo svg{width:100%;height:auto;color:#F6F7F2;display:block;overflow:visible}
 .intro-strap{display:flex;gap:.55em;font-family:var(--disp);font-weight:700;text-transform:uppercase;
   letter-spacing:.2em;font-size:clamp(.6rem,1.7vw,.82rem);color:var(--lime)}
 .intro-strap span{opacity:0;animation:strapWord .5s var(--ease) both}
-.tri-wrap{transform-box:view-box;transform-origin:162px 72px;animation:triZoom 2.3s var(--ease) both}
-@keyframes triZoom{0%{transform:translate(82px,8px) scale(3.4)}62%{transform:translate(82px,8px) scale(3.4)}100%{transform:none}}
-.tri-draw{animation:triOut .5s ease 1.5s forwards}
-.real-tri{opacity:0;animation:realTri .45s var(--ease) 1.05s both}
-.ltr-left{transform-box:fill-box;opacity:0;animation:ltrLeft .55s var(--ease) 2.3s both}
-.ltr-right{transform-box:fill-box;opacity:0;animation:ltrRight .55s var(--ease) 2.42s both}
+.tri-wrap{transform-box:view-box;transform-origin:162px 72px;animation:triZoom 2.45s cubic-bezier(.5,0,.18,1) both}
+@keyframes triZoom{0%{transform:translate(82px,8px) scale(3)}42%{transform:translate(82px,8px) scale(3)}100%{transform:none}}
+.tri-draw{animation:triOut .55s ease 1.4s forwards}
+.real-tri{opacity:0;animation:realTri .55s ease 1.05s both}
+.ltr-left{transform-box:fill-box;opacity:0;animation:ltrLeft .6s var(--ease) 2.15s both}
+.ltr-right{transform-box:fill-box;opacity:0;animation:ltrRight .6s var(--ease) 2.25s both}
 @keyframes triOut{to{opacity:0}}
 @keyframes realTri{0%{opacity:0}100%{opacity:1}}
-@keyframes ltrLeft{0%{opacity:0;transform:translateX(-90%)}100%{opacity:1;transform:none}}
-@keyframes ltrRight{0%{opacity:0;transform:translateX(60%)}100%{opacity:1;transform:none}}
+@keyframes ltrLeft{0%{opacity:0;transform:translateX(-26%)}100%{opacity:1;transform:none}}
+@keyframes ltrRight{0%{opacity:0;transform:translateX(11%)}100%{opacity:1;transform:none}}
 .tag-w1,.tag-w2,.tag-w3{transform-box:fill-box;opacity:0;animation:tagWord .5s var(--ease) both}
-.tag-w1{animation-delay:2.95s}.tag-w2{animation-delay:3.17s}.tag-w3{animation-delay:3.39s}
+.tag-w1{animation-delay:2.6s}.tag-w2{animation-delay:2.76s}.tag-w3{animation-delay:2.92s}
 @keyframes tagWord{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
-@keyframes cdotIn{0%{opacity:0;transform:scale(0)}70%{opacity:1;transform:scale(1.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes cdotIn{0%{opacity:0;transform:scale(.35)}100%{opacity:1;transform:scale(1)}}
 @keyframes clnDraw{0%{stroke-dashoffset:1;opacity:.2}25%{opacity:.9}100%{stroke-dashoffset:0;opacity:.9}}
-@keyframes cpulse{0%{opacity:.75;transform:scale(.25)}100%{opacity:0;transform:scale(3.4)}}
+@keyframes cpulse{0%{opacity:.45;transform:scale(.3)}100%{opacity:0;transform:scale(2.2)}}
 @keyframes introLogoIn{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
 @keyframes strapWord{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
 @keyframes introOut{0%{opacity:1}100%{opacity:0;visibility:hidden}}
@@ -674,9 +674,9 @@ mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false
 addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 // reveals + highlighter + step bars
 const rio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target)}})},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv,.step,.mark').forEach(el=>rio.observe(el));
+document.querySelectorAll('.rv,.step,.mark').forEach(el=>{if(el.classList.contains('mark')&&el.closest('.hero'))return;rio.observe(el)});
 // fire hero highlighter shortly after load even before scroll
-addEventListener('load',()=>{setTimeout(()=>{document.querySelectorAll('.hero .mark').forEach(m=>m.classList.add('in'))},350)});
+/* hero highlight now fires when the intro clears (see intro reveal) */
 // counters
 const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;
   const to=+el.dataset.to;const dur=1400;const t0=performance.now();
@@ -721,9 +721,9 @@ if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
 </script>
 <script>
 (function(){var i=document.getElementById('intro');if(!i)return;var h=document.documentElement;
- if(matchMedia('(prefers-reduced-motion:reduce)').matches){i.style.display='none';return;}
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){i.style.display='none';document.querySelectorAll('.hero .mark').forEach(m=>m.classList.add('in'));return;}
  h.classList.add('intro-lock');
- function reveal(){h.classList.add('intro-done');}
+ function reveal(){h.classList.add('intro-done');document.querySelectorAll('.hero .mark').forEach(m=>m.classList.add('in'))}
  function done(){i.style.display='none';h.classList.remove('intro-lock');reveal();}
  i.addEventListener('click',done);
  i.addEventListener('animationstart',function(e){if(e.animationName==='introOut')reveal();});
