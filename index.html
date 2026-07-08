@@ -326,6 +326,27 @@ form.sent .form-done{display:flex}
 .brand-anim .lg-word{animation:lgWord .66s var(--ease) .3s both}
 .brand-anim .lg-tag{transform-box:fill-box;animation:lgTag .5s ease .55s both}
 @media (prefers-reduced-motion:reduce){.brand-anim .lg-tri,.brand-anim .lg-word,.brand-anim .lg-tag{animation:none}}
+/* full-screen intro splash */
+html.intro-lock{overflow:hidden}
+#intro{position:fixed;inset:0;z-index:2000;background:radial-gradient(circle at 50% 42%,#0b1226,var(--navy) 72%);
+  display:grid;place-items:center;animation:introOut .6s var(--ease) 3.5s forwards}
+.intro-stage{display:flex;flex-direction:column;align-items:center;gap:26px}
+.intro-net{width:min(82vw,430px);height:auto;overflow:visible}
+.cdot{fill:var(--lime);transform-box:fill-box;transform-origin:center;opacity:0;filter:drop-shadow(0 0 4px rgba(179,221,3,.55));animation:cdotIn .5s var(--ease) both}
+.cln{stroke:var(--lime);stroke-width:2;stroke-linecap:round;fill:none;stroke-dasharray:1;stroke-dashoffset:1;opacity:.9;filter:drop-shadow(0 0 3px rgba(179,221,3,.55));animation:clnDraw .42s ease both}
+.cpulse{stroke:var(--lime);stroke-width:2;fill:none;transform-box:fill-box;transform-origin:center;opacity:0;animation:cpulse .7s ease both}
+.intro-logo{width:min(74vw,340px);opacity:0;animation:introLogoIn .7s var(--ease) 1.7s both}
+.intro-logo svg{width:100%;height:auto;color:#F6F7F2;display:block}
+.intro-strap{display:flex;gap:.55em;font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  letter-spacing:.2em;font-size:clamp(.6rem,1.7vw,.82rem);color:var(--lime)}
+.intro-strap span{opacity:0;animation:strapWord .5s var(--ease) both}
+@keyframes cdotIn{0%{opacity:0;transform:scale(0)}70%{opacity:1;transform:scale(1.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes clnDraw{0%{stroke-dashoffset:1;opacity:.2}25%{opacity:.9}100%{stroke-dashoffset:0;opacity:.9}}
+@keyframes cpulse{0%{opacity:.75;transform:scale(.25)}100%{opacity:0;transform:scale(3.4)}}
+@keyframes introLogoIn{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes strapWord{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+@keyframes introOut{0%{opacity:1}100%{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){#intro{display:none}}
 
 /* ---- responsive ---- */
 @media (max-width:900px){
@@ -423,6 +444,41 @@ form.sent .form-done{display:flex}
   </g>
   <path fill="#b3dd03" d="M212.89,81.13c-1.09,0-2.15.16-3.15.46l-39.5-54.3c1.23-1.8,1.94-3.97,1.94-6.31,0-6.2-5.03-11.23-11.23-11.23s-11.23,5.03-11.23,11.23c0,2.7.96,5.18,2.55,7.12l-38.55,64.48c-.7-.14-1.42-.21-2.17-.21-6.2,0-11.23,5.03-11.23,11.23s5.03,11.23,11.23,11.23c5.3,0,9.73-3.68,10.91-8.62l80.34-8.9c1.83,3.72,5.65,6.29,10.07,6.29,6.2,0,11.23-5.03,11.23-11.23s-5.03-11.23-11.23-11.23ZM120.24,96.46l38.55-64.48c.7.14,1.42.21,2.17.21,1.09,0,2.15-.16,3.14-.45l39.5,54.3c-.76,1.11-1.31,2.36-1.63,3.71l-80.34,8.9c-.38-.78-.85-1.52-1.4-2.19Z"/>
 </g></symbol></defs></svg>
+
+<div id="intro" role="presentation">
+  <div class="intro-stage">
+  <svg class="intro-net" viewBox="0 0 300 170" fill="none" aria-hidden="true">
+    <path class="cln" d="M150 24 L58 62" pathLength="1" style="animation-delay:0.50s"/>
+    <path class="cln" d="M150 24 L242 62" pathLength="1" style="animation-delay:0.62s"/>
+    <path class="cln" d="M150 24 L150 80" pathLength="1" style="animation-delay:0.74s"/>
+    <path class="cln" d="M58 62 L100 132" pathLength="1" style="animation-delay:0.86s"/>
+    <path class="cln" d="M242 62 L200 132" pathLength="1" style="animation-delay:0.98s"/>
+    <path class="cln" d="M150 80 L100 132" pathLength="1" style="animation-delay:1.10s"/>
+    <path class="cln" d="M150 80 L200 132" pathLength="1" style="animation-delay:1.22s"/>
+    <path class="cln" d="M100 132 L200 132" pathLength="1" style="animation-delay:1.34s"/>
+    <circle class="cpulse" cx="58" cy="62" r="5.5" style="animation-delay:0.92s"/>
+    <circle class="cpulse" cx="242" cy="62" r="5.5" style="animation-delay:1.04s"/>
+    <circle class="cpulse" cx="150" cy="80" r="5.5" style="animation-delay:1.16s"/>
+    <circle class="cpulse" cx="100" cy="132" r="5.5" style="animation-delay:1.28s"/>
+    <circle class="cpulse" cx="200" cy="132" r="5.5" style="animation-delay:1.40s"/>
+    <circle class="cpulse" cx="100" cy="132" r="5.5" style="animation-delay:1.52s"/>
+    <circle class="cpulse" cx="200" cy="132" r="5.5" style="animation-delay:1.64s"/>
+    <circle class="cpulse" cx="200" cy="132" r="5.5" style="animation-delay:1.76s"/>
+    <circle class="cdot" data-x cx="150" cy="24" r="4.6" style="animation-delay:0.12s"/>
+    <circle class="cdot" data-x cx="58" cy="62" r="4.6" style="animation-delay:0.20s"/>
+    <circle class="cdot" data-x cx="242" cy="62" r="4.6" style="animation-delay:0.28s"/>
+    <circle class="cdot" data-x cx="100" cy="132" r="4.6" style="animation-delay:0.36s"/>
+    <circle class="cdot" data-x cx="200" cy="132" r="4.6" style="animation-delay:0.44s"/>
+    <circle class="cdot" data-x cx="150" cy="80" r="4.6" style="animation-delay:0.52s"/>
+  </svg>
+  <div class="intro-logo"><svg viewBox="0 0 488.86 116" aria-hidden="true"><g fill="currentColor"><g>
+    <path fill="currentColor" d="M102.41,35.61c-3.86-2.27-8.13-3.41-12.81-3.41h-56.73v71.16h10.17v-20.33h46.56c4.68,0,8.95-1.15,12.81-3.46,3.86-2.3,6.93-5.37,9.2-9.2,2.27-3.83,3.41-8.08,3.41-12.76s-1.14-8.95-3.41-12.81c-2.27-3.86-5.34-6.93-9.2-9.2ZM102.82,65.29c-1.36,2.34-3.19,4.2-5.49,5.59-2.3,1.39-4.88,2.08-7.73,2.08h-46.56v-30.6h46.56c2.85,0,5.42.68,7.73,2.03,2.3,1.36,4.13,3.19,5.49,5.49,1.36,2.3,2.03,4.88,2.03,7.73s-.68,5.34-2.03,7.68Z"/>
+    <polygon fill="currentColor" points="204.68 42.37 240.67 42.37 240.67 103.36 250.83 103.36 250.83 42.37 286.82 42.37 286.82 32.2 204.68 32.2 204.68 42.37"/>
+    <path fill="currentColor" d="M309.29,34.94c-4,1.83-7.44,4.39-10.32,7.67-2.88,3.29-5.1,7.08-6.66,11.39-1.56,4.3-2.34,8.89-2.34,13.77s.78,9.57,2.34,13.88c1.56,4.31,3.78,8.08,6.66,11.34,2.88,3.25,6.32,5.79,10.32,7.62,4,1.83,8.47,2.74,13.42,2.74h44.33v-10.17h-44.33c-4.68,0-8.69-1.15-12.05-3.46-3.35-2.3-5.95-5.37-7.78-9.2-1.83-3.83-2.74-8.08-2.74-12.76s.91-8.95,2.74-12.81,4.42-6.93,7.78-9.2c3.35-2.27,7.37-3.41,12.05-3.41h44.33v-10.17h-44.33c-4.95,0-9.42.91-13.42,2.74Z"/>
+    <polygon fill="currentColor" points="445.81 32.2 445.81 62.7 391.02 62.7 391.02 32.2 380.85 32.2 380.85 103.36 391.02 103.36 391.02 72.86 445.81 72.86 445.81 103.36 455.98 103.36 455.98 32.2 445.81 32.2"/></g><path fill="#b3dd03" d="M212.89,81.13c-1.09,0-2.15.16-3.15.46l-39.5-54.3c1.23-1.8,1.94-3.97,1.94-6.31,0-6.2-5.03-11.23-11.23-11.23s-11.23,5.03-11.23,11.23c0,2.7.96,5.18,2.55,7.12l-38.55,64.48c-.7-.14-1.42-.21-2.17-.21-6.2,0-11.23,5.03-11.23,11.23s5.03,11.23,11.23,11.23c5.3,0,9.73-3.68,10.91-8.62l80.34-8.9c1.83,3.72,5.65,6.29,10.07,6.29,6.2,0,11.23-5.03,11.23-11.23s-5.03-11.23-11.23-11.23ZM120.24,96.46l38.55-64.48c.7.14,1.42.21,2.17.21,1.09,0,2.15-.16,3.14-.45l39.5,54.3c-.76,1.11-1.31,2.36-1.63,3.71l-80.34,8.9c-.38-.78-.85-1.52-1.4-2.19Z"/></svg></div>
+  <div class="intro-strap"><span style="animation-delay:2.25s">Every</span> <span style="animation-delay:2.47s">patch</span> <span style="animation-delay:2.69s">covered</span></div>
+  </div>
+</div>
 
 <header class="nav" id="nav"><div class="nav-in">
   <a class="brand brand-anim" href="#top" aria-label="PATCH home"><svg viewBox="0 0 488.86 160.84" aria-hidden="true">
@@ -678,6 +734,16 @@ function initNet(cv){
   new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){if(!raf)draw()}else{cancelAnimationFrame(raf);raf=0}})},{threshold:0}).observe(cv);
 }
 if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
+</script>
+<script>
+(function(){var i=document.getElementById('intro');if(!i)return;var h=document.documentElement;
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches){i.style.display='none';return;}
+ h.classList.add('intro-lock');
+ function done(){i.style.display='none';h.classList.remove('intro-lock');}
+ i.addEventListener('click',done);
+ i.addEventListener('animationend',function(e){if(e.animationName==='introOut')done();});
+ setTimeout(done,6000);
+})();
 </script>
 <!-- GSAP scroll animations (scroll parallax layered under the existing reveal system) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
