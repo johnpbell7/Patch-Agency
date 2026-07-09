@@ -358,7 +358,7 @@ html.intro-lock{overflow:hidden}
 @keyframes introLogoIn{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
 @keyframes strapWord{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
 @keyframes introOut{0%{opacity:1}100%{opacity:0;visibility:hidden}}
-@media (prefers-reduced-motion:reduce){#intro{display:none}}
+@media (prefers-reduced-motion:reduce){.real-tri,.ltr-left,.ltr-right,.tag-w1,.tag-w2,.tag-w3{opacity:1!important;transform:none!important;animation:none!important}#intro{animation:introOut .5s ease 1.4s forwards!important}}
 
 /* ---- responsive ---- */
 @media (max-width:900px){
@@ -722,14 +722,14 @@ if(!rmNet){document.querySelectorAll('.netbg').forEach(initNet)}
 </script>
 <script>
 (function(){var i=document.getElementById('intro');if(!i)return;var h=document.documentElement;
- function reveal(){h.classList.add('intro-done');document.querySelectorAll('.hero .mark').forEach(function(m){m.classList.add('in');});}
- if(matchMedia('(prefers-reduced-motion:reduce)').matches){i.style.display='none';reveal();return;}
+ var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ function reveal(){if(reduce)return;h.classList.add('intro-done');document.querySelectorAll('.hero .mark').forEach(function(m){m.classList.add('in');});}
  h.classList.add('intro-lock');
  function done(){i.style.display='none';h.classList.remove('intro-lock');reveal();}
  i.addEventListener('click',done);
  i.addEventListener('animationstart',function(e){if(e.animationName==='introOut')reveal();});
  i.addEventListener('animationend',function(e){if(e.animationName==='introOut')done();});
- setTimeout(done,5000);
+ setTimeout(done,reduce?2600:5000);
 })();
 </script>
 <!-- GSAP scroll animations (scroll parallax layered under the existing reveal system) -->
