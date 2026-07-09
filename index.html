@@ -227,9 +227,11 @@ svg.arrow{width:1.05em;height:1.05em;flex:none}
   background:radial-gradient(circle,rgba(179,221,3,.16),transparent 66%);opacity:.7;transition:opacity .35s}
 .ind:hover{transform:translateY(-4px);border-color:rgba(179,221,3,.55)}
 .ind:hover::after{opacity:1}
-.ind .wm{position:absolute;right:-14px;bottom:-22px;width:120px;height:120px;color:var(--lime);opacity:.10;
-  z-index:1;pointer-events:none;transition:opacity .4s,transform .5s var(--ease)}
-.ind:hover .wm{opacity:.16;transform:translateY(-5px) rotate(-5deg)}
+.ind .ind-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  z-index:1;pointer-events:none;opacity:.92;transition:opacity .4s,transform .6s var(--ease);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 20%,#000 60%);
+          mask-image:linear-gradient(90deg,transparent 0,transparent 20%,#000 60%)}
+.ind:hover .ind-art{opacity:1;transform:scale(1.045)}
 .ind .ic{position:absolute;left:20px;top:18px;z-index:2;width:46px;height:46px;color:var(--lime);
   display:grid;place-items:center;border:1px solid rgba(179,221,3,.32);border-radius:12px;background:rgba(179,221,3,.06)}
 .ind .ic svg{width:26px;height:26px}
@@ -422,12 +424,16 @@ html.intro-lock{overflow:hidden}
   .proof .stat .n{font-size:2.7rem;flex:none}
   .proof .stat .l{margin-top:0;text-align:right;max-width:15ch}
   .ind-grid{grid-template-columns:1fr;gap:10px}
-  .ind{aspect-ratio:auto;display:flex;align-items:center;gap:16px;padding:16px 18px}
+  .ind{aspect-ratio:auto;display:flex;align-items:center;gap:16px;padding:16px 18px;
+    padding-right:clamp(116px,40%,168px);min-height:84px}
   .ind::after{display:none}
-  .ind .wm,.ind .num{display:none}
+  .ind .num{display:none}
+  .ind .ind-art{left:auto;right:0;width:52%;object-position:center;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 56%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 56%)}
   .ind .ic{position:static;width:44px;height:44px;flex:none}
   .ind .ic svg{width:24px;height:24px}
-  .ind .lab{position:static;flex:1;font-size:1.08rem}
+  .ind .lab{position:relative;z-index:2;flex:1;font-size:1.08rem}
   .ind .lab span{margin-bottom:3px}
   .two{grid-template-columns:1fr}
   .foot-top{grid-template-columns:1fr}
@@ -610,12 +616,12 @@ html.intro-lock{overflow:hidden}
     <p class="lead">We know the aisles your brand competes in — and the shopper moments that move it.</p>
   </div>
   <div class="ind-grid">
-    <div class="ind rv rv-d1"><span class="num">01</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-food"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-food"/></svg><div class="lab"><span>Sector</span>Food &amp; drink</div></div>
-    <div class="ind rv rv-d2"><span class="num">02</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-beauty"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-beauty"/></svg><div class="lab"><span>Sector</span>Health &amp; beauty</div></div>
-    <div class="ind rv rv-d3"><span class="num">03</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-home"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-home"/></svg><div class="lab"><span>Sector</span>Household &amp; home care</div></div>
-    <div class="ind rv rv-d1"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-conf"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-conf"/></svg><div class="lab"><span>Sector</span>Confectionery &amp; snacking</div></div>
-    <div class="ind rv rv-d2"><span class="num">05</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-drinks"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-drinks"/></svg><div class="lab"><span>Sector</span>Beers, wines &amp; spirits</div></div>
-    <div class="ind rv rv-d3"><span class="num">06</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-vape"/></svg></span><svg class="wm" viewBox="0 0 24 24"><use href="#i-vape"/></svg><div class="lab"><span>Sector</span>Vape &amp; nicotine</div></div>
+    <div class="ind rv rv-d1"><span class="num">01</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-food"/></svg></span><img class="ind-art" src="assets/ind-food.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Food &amp; drink</div></div>
+    <div class="ind rv rv-d2"><span class="num">02</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-beauty"/></svg></span><img class="ind-art" src="assets/ind-beauty.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Health &amp; beauty</div></div>
+    <div class="ind rv rv-d3"><span class="num">03</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-home"/></svg></span><img class="ind-art" src="assets/ind-home.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Household &amp; home care</div></div>
+    <div class="ind rv rv-d1"><span class="num">04</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-conf"/></svg></span><img class="ind-art" src="assets/ind-conf.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Confectionery &amp; snacking</div></div>
+    <div class="ind rv rv-d2"><span class="num">05</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-drinks"/></svg></span><img class="ind-art" src="assets/ind-drinks.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Beers, wines &amp; spirits</div></div>
+    <div class="ind rv rv-d3"><span class="num">06</span><span class="ic"><svg viewBox="0 0 24 24"><use href="#i-vape"/></svg></span><img class="ind-art" src="assets/ind-vape.jpg" alt="" loading="lazy"><div class="lab"><span>Sector</span>Vape &amp; nicotine</div></div>
   </div>
 </div></section>
 
