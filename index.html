@@ -121,7 +121,8 @@ svg.arrow{width:1.05em;height:1.05em;flex:none}
 .hero{position:relative;background:var(--navy);overflow:hidden;display:flex;align-items:center;
   min-height:100vh;min-height:100svh;padding-top:clamp(122px,14vw,150px);padding-bottom:clamp(64px,8vw,112px)}
 .hero-photo{position:absolute;inset:0;z-index:0;background-repeat:no-repeat;background-size:cover;background-position:72% center}
-.hero-photo,.fwband-img{background-image:url('assets/team.jpg')}
+.hero-photo{background-image:url('assets/hero.jpg')}
+.fwband-img{background-image:url('assets/parallax.jpg')}
 .hero-photo::after{content:"";position:absolute;inset:0;
   background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 20%,rgba(6,8,15,.6) 40%,rgba(6,8,15,0) 66%),
              linear-gradient(0deg,rgba(6,8,15,.4),transparent 38%)}
@@ -203,7 +204,7 @@ svg.arrow{width:1.05em;height:1.05em;flex:none}
   color:var(--lime);line-height:.9;letter-spacing:-.03em}
 .proof .stat .l{margin-top:12px;font-size:.82rem;letter-spacing:.02em;color:#9AA08C;max-width:16ch}
 .fwband{position:relative;width:100%;overflow:hidden;height:clamp(320px,54vw,600px);background:var(--navy)}
-.fwband-img{position:absolute;inset:0;background-repeat:no-repeat;background-size:cover;background-position:72% 40%;will-change:transform}
+.fwband-img{position:absolute;inset:0;background-repeat:no-repeat;background-size:cover;background-position:center 30%;will-change:transform}
 .fwband::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,8,15,.28),transparent 22%,transparent 78%,rgba(6,8,15,.28))}
 
 /* ---- industries ---- */
