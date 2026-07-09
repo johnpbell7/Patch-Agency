@@ -162,6 +162,11 @@ svg.arrow{width:1.05em;height:1.05em;flex:none}
 .shead h2{font-size:clamp(1.95rem,3.9vw,3.05rem);font-weight:800}
 .shead .lead{margin-top:16px}
 .shead.center h2{margin-inline:auto}
+#services>.wrap,#how>.wrap{position:relative}
+#services>.wrap>.shead,#how>.wrap>.shead{padding-right:clamp(150px,26vw,360px)}
+.sec-art{position:absolute;top:clamp(-60px,-4.5vw,-26px);right:0;width:clamp(140px,23vw,322px);height:auto;border-radius:16px;border:6px solid #fff;transform:rotate(-5deg);box-shadow:0 12px 28px rgba(0,0,0,.13);z-index:4;pointer-events:none}
+.sec-art-b{transform:rotate(-4deg)}
+@media (max-width:760px){#services>.wrap>.shead,#how>.wrap>.shead{padding-right:128px}.sec-art{width:112px;right:14px;top:8px;border-width:5px;box-shadow:0 8px 20px rgba(0,0,0,.14)}}
 
 /* ---- services · divided list, no boxes ---- */
 .svc{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(34px,6vw,84px)}
@@ -433,6 +438,7 @@ html.intro-lock{overflow:hidden}
 </style>
 </head>
 <body>
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}addEventListener('load',function(){window.scrollTo(0,0);});</script>
 <a class="skip" href="#services">Skip to content</a>
 
 <!-- logo symbol · recoloured to inherit currentColor for light/dark placement -->
@@ -537,6 +543,7 @@ html.intro-lock{overflow:hidden}
 </section>
 
 <section class="section" id="services"><div class="wrap">
+  <img class="sec-art" src="assets/art-team.jpg" alt="PATCH field team" loading="lazy" decoding="async">
   <div class="shead rv">
     <h2>One team for the <span class="mark"><span>whole</span></span> shop floor.</h2>
     <p class="lead">From putting product into shoppers' hands to proving exactly what happened in every store — it's all run by one accountable field team.</p>
@@ -552,6 +559,7 @@ html.intro-lock{overflow:hidden}
 </div></section>
 
 <section class="section" id="how" style="background:var(--paper-2)"><div class="wrap">
+  <img class="sec-art sec-art-b" src="assets/art-route.jpg" alt="From boardroom to shop floor" loading="lazy" decoding="async">
   <div class="shead rv">
     <h2>From boardroom to <span class="mark"><span>shop floor</span></span>.</h2>
     <p class="lead">One process, one point of accountability — so you always know who was in store, what they did and what it delivered.</p>
