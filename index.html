@@ -444,6 +444,40 @@ html.intro-lock{overflow:hidden}
 </head>
 <body>
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}addEventListener('load',function(){window.scrollTo(0,0);});</script>
+
+<!-- ===== site lock ===== -->
+<style>
+#sitelock{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:rgba(2,10,31,.62);backdrop-filter:blur(13px);-webkit-backdrop-filter:blur(13px);
+  font-family:var(--sans,'Montserrat',system-ui,sans-serif);animation:lockin .5s cubic-bezier(.22,1,.36,1)}
+@keyframes lockin{from{opacity:0}to{opacity:1}}
+#sitelock .lockcard{width:min(440px,100%);background:#020A1F;border:1px solid rgba(255,255,255,.1);border-radius:22px;
+  padding:40px 34px 32px;text-align:center;box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
+  background-image:radial-gradient(460px 240px at 80% -10%,rgba(179,221,3,.16),transparent 62%)}
+#sitelock .lockring{width:66px;height:66px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(179,221,3,.12);border:1px solid rgba(179,221,3,.4);color:#B3DD03}
+#sitelock .eyb{font-size:.66rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#B3DD03}
+#sitelock h2{color:#fff;font-size:1.62rem;font-weight:800;letter-spacing:-.02em;margin:10px 0 8px}
+#sitelock p{color:#AEB8CE;font-size:.92rem;line-height:1.55;margin:0 auto;max-width:32ch}
+#sitelock .by{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;gap:9px;color:#fff;font-weight:700;font-size:.9rem}
+#sitelock .by .dot{width:7px;height:7px;border-radius:50%;background:#B3DD03}
+#sitelock .by span{color:#7A88A6;font-weight:600}
+html.locked,body.locked{overflow:hidden!important;height:100%}
+@media(prefers-reduced-motion:reduce){#sitelock{animation:none}}
+</style>
+<div id="sitelock" role="dialog" aria-modal="true" aria-label="Site locked">
+  <div class="lockcard">
+    <div class="lockring"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+    <div class="eyb">Private</div>
+    <h2>This site is locked</h2>
+    <p>This preview isn't publicly available yet. Access is by invitation only.</p>
+    <div class="by"><span class="dot"></span>Locked by John Bell</div>
+  </div>
+</div>
+<script>document.documentElement.classList.add('locked');addEventListener('DOMContentLoaded',function(){document.body.classList.add('locked');});</script>
+<!-- ===== /site lock ===== -->
+
 <a class="skip" href="#services">Skip to content</a>
 
 <!-- logo symbol · recoloured to inherit currentColor for light/dark placement -->
